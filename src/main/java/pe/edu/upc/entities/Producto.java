@@ -11,10 +11,9 @@ import javax.persistence.Table;
 @Table(name = "Producto")
 
 public class Producto{
-
+	
 		@Id
-		//@GeneratedValue(strategy = GenerationType.AUTO)
-		@Column(name = "idProducto", nullable=false, length = 60)
+		@GeneratedValue(strategy = GenerationType.AUTO)
 		private int idProducto;
 		
 		@Column(name = "nombreProducto", nullable=false, length = 60)
