@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="content">
+
+		<h2>Lista de Productos</h2>
+		<h:form>
+			<p:dataTable id="lstProducto"
+				value="#{productoController.listaProductos}" var="pr"
+				paginator="true" paginatorPosition="top"
+				rowsPerPageTemplate="5,10,15,20,25" rows="5" rowIndexVar="item"
+				emptyMessage="No existen Productos en la lista">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{pr.idProducto}" />
+				</p:column>
+
+				<p:column headerText="Nombres">
+					<h:outputText value="#{pr.nombreProducto}" />
+				</p:column>
+
+				<p:column headerText="Descripcion">
+					<h:outputText value="#{pr.descripcionProducto}" />
+				</p:column>
+
+				<p:column headerText="Precio">
+					<h:outputText value="#{pr.precioProducto}" />
+				</p:column>
+
+				<p:column headerText="Año Fabricacion">
+					<h:outputText value="#{pr.anioProduccion}" />
+				</p:column>
+
+				<p:column headerText="Operacion">
+                    <h:commandLink action="listaProductos" value="Eliminar"
+                        actionListener="#{productoController.eliminar(pr)}" />
+                </p:column>
+			</p:dataTable>
+			</h:form>
+	</ui:define>
+</ui:composition>
+</html>
