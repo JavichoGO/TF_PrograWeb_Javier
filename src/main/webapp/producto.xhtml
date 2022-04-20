@@ -11,19 +11,19 @@
 		<h2>Registro de Productos</h2>
 		<h:form>
 			<h:outputLabel value="ID" for="id" styleClass="control-label" />
-			<p:inputText id ="id" styleClass="form-class value" value="#{productoController.p.idProducto}"></p:inputText>
+			<p:inputText id ="id" styleClass="form-control" value="#{productoController.p.idProducto}"></p:inputText>
 			
 			<h:outputLabel value="Nombre" for="nombre" styleClass="control-label" />
-			<p:inputText id ="nombre" styleClass="form-class value" value="#{productoController.p.nombreProducto}"></p:inputText>
+			<p:inputText id ="nombre" styleClass="form-control" value="#{productoController.p.nombreProducto}"></p:inputText>
 			
 			<h:outputLabel value="Descripcion" for="descripcion" styleClass="control-label" />
-			<p:inputText id ="descripcion" styleClass="form-class value" value="#{productoController.p.descripcionProducto}"></p:inputText>
+			<p:inputText id ="descripcion" styleClass="form-control" value="#{productoController.p.descripcionProducto}"></p:inputText>
 			
 			<h:outputLabel value="Precio" for="precio" styleClass="control-label" />
-			<p:inputText id ="precio" styleClass="form-class value" value="#{productoController.p.precioProducto}"></p:inputText>
+			<p:inputText id ="precio" styleClass="form-control" value="#{productoController.p.precioProducto}"></p:inputText>
 			
 			<h:outputLabel value="Anio Fabricacion" for="anioproduccion" styleClass="control-label" />
-			<p:inputText id ="anioproduccion" styleClass="form-class value" value="#{productoController.p.anioProduccion}"></p:inputText>
+			<p:inputText id ="anioproduccion" styleClass="form-control" value="#{productoController.p.anioProduccion}"></p:inputText>
 
 		<p:commandButton
 		value="Grabar" actionListener="#{productoController.insert()}" action="producto?faces-redirect=true" update ="@form">
