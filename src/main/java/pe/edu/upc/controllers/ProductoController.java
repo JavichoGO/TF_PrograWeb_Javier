@@ -51,11 +51,20 @@ public class ProductoController {
 			// TODO: handle exception
 		}
 	}
-	public void eliminar(Producto pro) {
+	public void delete(Producto pro) {
 		
-			pService.eliminar(pro.getIdProducto());
+			pService.delete(pro.getIdProducto());
 			list();
 	}
+	//buscar
+	public void findByNameProduct() {
+		try {
+			listaProductos = pService.findByNameProduct(this.getP());
+		} catch (Exception e) {
+			System.out.println("Error al buscar producto en el controlador");
+		}
+	}
+	
 	//getters and setters
 	public Producto getP() {
 		return p;
@@ -68,6 +77,10 @@ public class ProductoController {
 	}
 	public void setListaProductos(List<Producto> listaProductos) {
 		this.listaProductos = listaProductos;
+	}
+
+	public IProductoService getpService() {
+		return pService;
 	}
 	
 	

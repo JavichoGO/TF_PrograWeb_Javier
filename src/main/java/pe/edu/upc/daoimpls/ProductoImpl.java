@@ -32,18 +32,32 @@ public class ProductoImpl implements IProductoDao {
 	public List<Producto> list() {
 		List<Producto> listaProductos = new ArrayList<Producto>();
 		try {
-			Query jpql = em.createQuery("from Producto p");
-			listaProductos = (List<Producto>) jpql.getResultList();
+			Query q = em.createQuery("from Producto p");
+			listaProductos = (List<Producto>) q.getResultList();
 		} catch (Exception e) {
 			System.out.println("Error al listar en el DAO de Producto");
 		}
 		return listaProductos;
 	}
-@Transactional
-	@Override
-	public void eliminar(int idProducto) {
+
+	@Transactional
+	public void delete(int idProducto) {
 		Producto pro = em.find(Producto.class, idProducto);
-			em.remove(pro);
+		em.remove(pro);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Producto> findByNameProduct(Producto p) {
+		List<Producto> lista = new ArrayList<Producto>();
+		try {
+			Query q = em.createQuery("from Producto p where p.nombreProducto like ?1");
+			q.setParameter(1, "%"+p.getNombreProducto()+"%");
+			lista= (List<Producto>) q.getResultList();
+		} catch (Exception e) {
+			System.out.println("Error al buscar producto en el dao");
+		}
+		return lista;
 	}
 
 }

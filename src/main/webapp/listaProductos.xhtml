@@ -11,7 +11,17 @@
 
 		<h2>Lista de Productos</h2>
 		<h:form>
-			<p:dataTable id="lstProducto"
+			<div class = "row">
+				<div class = "col-sm-4">
+					<h:outputLabel for="Producto" value = "Ingrese el nombre del producto a buscar: "
+						 styleClass="control-label"/>	
+					<p:inputText id="Producto" value = "#{productoController.p.nombreProducto}" sytleClass="form-control"/>
+					<p:commandButton value="Buscar" update ="lstProducto"		
+					actionListener="#{productoController.findByNameProduct()}"/>
+							
+					</div>
+			</div>
+		<p:dataTable id="lstProducto"
 				value="#{productoController.listaProductos}" var="pr"
 				paginator="true" paginatorPosition="top"
 				rowsPerPageTemplate="5,10,15,20,25" rows="5" rowIndexVar="item"
@@ -21,7 +31,7 @@
 					<h:outputText value="#{pr.idProducto}" />
 				</p:column>
 
-				<p:column headerText="Nombres">
+				<p:column headerText="Nombre">
 					<h:outputText value="#{pr.nombreProducto}" />
 				</p:column>
 
@@ -36,10 +46,15 @@
 				<p:column headerText="Año Fabricacion">
 					<h:outputText value="#{pr.anioProduccion}" />
 				</p:column>
+				
+				<p:column headerText="Precio Total">
+					<h:outputText value="#{(pr.anioProduccion + pr.precioProducto)/pr.anioProduccion}" />
+				</p:column>
+				
 
 				<p:column headerText="Operacion">
                     <h:commandLink action="listaProductos" value="Eliminar"
-                        actionListener="#{productoController.eliminar(pr)}" />
+                        actionListener="#{productoController.delete(pr)}" />
                 </p:column>
 			</p:dataTable>
 			</h:form>

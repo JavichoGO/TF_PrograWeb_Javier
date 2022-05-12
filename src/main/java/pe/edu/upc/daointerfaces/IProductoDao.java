@@ -7,7 +7,7 @@ import pe.edu.upc.entities.Producto;
 public interface IProductoDao {
 	public void insert(Producto p);
 	public List<Producto> list();
-
-	public void eliminar(int idProducto);
+	public void delete(int idProducto);
+	public List<Producto> findByNameProduct(Producto p);
 	
 }
